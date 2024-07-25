@@ -13,7 +13,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="*" element={<ReportWrite />} />
       </Route>
-      <Route path="/editor" element={<GraphicalEditor />}></Route>
+      {/* <Route path="/editor" element={<GraphicalEditor />}></Route> */}
     </Routes>
   )
 }

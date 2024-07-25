@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Overview from '@report/Overview';
 import InputBox from '@/report/InputBox';
 import ImageTableComponent from '@report/ImageTableComponent';
@@ -17,12 +17,33 @@ const openWindow = (from, wRate, hRate) => {
     const width = Math.max(DEFAULT_WIDTH, 370);
     const height = Math.max((hRate * rate) + 90, 550);
     console.log(`width=${width}, height=${height}`);
-    window.open('/editor?' + params, 'NewWindow', `width=${width}, height=${height}`);
+    window.open('/editor.html?' + params, 'NewWindow', `width=${width}, height=${height + 40}`);
 }
 
 export const EditorDispatch = React.createContext(null);
 
 const ReportWrite = () => {
+    
+
+    useEffect(() => {
+        window.addEventListener('message', (e)=> {
+            if (e.origin !== window.location.origin) {
+                return;
+            }
+            console.log('Received message from child:', e.data);
+            const id = e.data.from;
+            const base64 = e.data.base64;
+            const target = document.getElementById(id);
+
+            while (target.firstChild) {
+                target.removeChild(target.firstChild);
+            }
+
+            const imgTag = document.createElement('img');
+            imgTag.src = base64;
+            target.appendChild(imgTag);
+        });
+    }, []);
 
     return <>
         <section className="basis-80 py-10">
