@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "ES2015",
+        "baseUrl": "src",
+        "paths": {
+            "@/*": ["*"],
+            "@css": ["css/*"],
+            "@assets": ["assets/*"],
+            "@components": ["components/*"],
+            "@pages/*": ["pages/*"],
+            "@layouts/*": ["layouts/*"],
+            "@report/*": ["report/*"]
+        }
+    }
+}
