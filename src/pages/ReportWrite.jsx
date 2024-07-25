@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Overview from '@report/Overview';
-import InputBox from '@/report/InputBox';
-import ImageTableComponent from '@report/ImageTableComponent';
-import ImageComponent from '@report/ImageComponent';
+import InspectionDetails from '@/report/InspectionDetails';
+import { InspectionDetailsProvider } from '@/report/InspectionDetailsContext';
 
 
 const openWindow = (from, wRate, hRate) => {
@@ -50,13 +49,14 @@ const ReportWrite = () => {
 
         </section>
         <section className="flex-1 bd-main py-10">
+            <h2 className="mb-3 text-2xl font-semibold">1. Combuster, Drum</h2>
             <EditorDispatch.Provider value={openWindow}>
                 <Overview></Overview>
                 <div>
-                    <h3 className="mb-2 font-semibold">다. 점검 결과</h3>
-                    {/* <InputBox /> */}
-                    <ImageTableComponent />
-                    <ImageComponent />
+                    <h3 className="mb-5 font-semibold">다. 점검 결과</h3>
+                    <InspectionDetailsProvider>
+                        <InspectionDetails />
+                    </InspectionDetailsProvider>
                 </div>
             </EditorDispatch.Provider>
         </section>
