@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { EditorDispatch } from '@pages/ReportWrite';
+import { EditorDispatch } from '@/report/InspectionDetails';
 
 const ImageComponent = () => {
 
