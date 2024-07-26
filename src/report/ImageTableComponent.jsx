@@ -74,9 +74,6 @@ const ImageTableComponent = ({ value, index, isFirst, isLast }) => {
                 }}
               ></div>
             </div>
-            <p className="text-center text-gray-500 p-3 text-sm">
-              Select Layout
-            </p>
           </div>
           <div className="col-span-3">
             <div className="grid grid-cols-6 grid-rows-3 h-full">
