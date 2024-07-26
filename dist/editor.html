@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>editor</title>
-    <link href="/css/styles.css" rel="stylesheet">
+    <link href="../src/css/styles.css" rel="stylesheet">
     <script type="module">
         const urlPrams = new URLSearchParams(window.location.search);
         const wRate = urlPrams.get('wRate');
         const hRate = urlPrams.get('hRate');
         const from = urlPrams.get('from');
         console.log(wRate, hRate);
-        import "/editor.js"
+        import "./editor.js"
 
         globalThis.from = from;
         globalThis.editor = new KPS.Editor('editor', {width: wRate, height: hRate});

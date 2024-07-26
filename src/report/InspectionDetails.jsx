@@ -15,7 +15,7 @@ const openWindow = (from, wRate, hRate) => {
   const width = Math.max(DEFAULT_WIDTH, 370);
   const height = Math.max((hRate * rate) + 90, 550);
   console.log(`width=${width}, height=${height}`);
-  window.open('/editor.html?' + params, 'NewWindow', `width=${width}, height=${height + 40}`);
+  window.open('./editor.html?' + params, 'NewWindow', `width=${width}, height=${height + 40}`);
 }
 
 export const EditorDispatch = React.createContext(null);

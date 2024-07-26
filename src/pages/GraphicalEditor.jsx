@@ -9,7 +9,7 @@ const GraphicalEditor = () => {
 
     useEffect(() => {
         const script = document.createElement("script");
-        script.src = "/editor.js";
+        script.src = "./editor.js";
         script.async = true;
         document.body.appendChild(script);
 

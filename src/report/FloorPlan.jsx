@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 
 const FloorPlan = () => {
 
-  const [mainPlan, setMainPlan] = useState('/all-plan-stroked.png');
-  const [subPlan, setSubPlan] = useState('/partial-plan.png');
+  const [mainPlan, setMainPlan] = useState('./all-plan-stroked.png');
+  const [subPlan, setSubPlan] = useState('./partial-plan.png');
 
   return (
     <>
