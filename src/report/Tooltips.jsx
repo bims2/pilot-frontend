@@ -2,15 +2,23 @@ import React from 'react';
 import { Plus, Trash, CaretUp, CaretDown } from '@phosphor-icons/react';
 import { useInspectionDetailsDispatch, useInspectionDetailsNextId } from '@report/InspectionDetailsContext';
 
-const Tooltips = ({ id, index, isFirst, isLast }) => {
+const Tooltips = ({ id, focusRef, index, isFirst, isLast }) => {
     const nextId = useInspectionDetailsNextId();
     const dispatch = useInspectionDetailsDispatch();
 
-    console.log(isFirst, isLast);
-
     const handleCreate = () => {
-        // dispatch({ type: 'CREATE', });
-        // nextId.current += 1;
+        const id = nextId.current;
+        console.log("create id: " + id);
+
+        dispatch({
+            type: 'CREATE',
+            index: index,
+            value: {
+                id: id,
+                type: 'IMAGE_TABLE',
+                value: { image: '', position: '', status: '', measure: '' }
+            }});
+        nextId.current += 1;
     };
 
     const handleRemove = () => {
@@ -19,10 +27,12 @@ const Tooltips = ({ id, index, isFirst, isLast }) => {
 
     const handleMoveForward = () => {
         dispatch({ type: 'MOVE', id: id, toIndex: index - 1});
+        focusRef.current.focus();
     }
 
     const handleMoveBackward = () => {
         dispatch({ type: 'MOVE', id: id, toIndex: index + 1});
+        focusRef.current.focus();
     }
 
     return (
@@ -51,7 +61,10 @@ const Tooltips = ({ id, index, isFirst, isLast }) => {
                     >
                         <Trash className="group-hover:text-red-500" size={16} weight="bold" />
                     </button>
-                    <button className="group p-1.5 border">
+                    <button
+                            className="group p-1.5 border"
+                            onClick={handleCreate}
+                    >
                         <Plus className="group-hover:text-sky-500" size={16} weight="bold" />
                     </button>
                 </div>

@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useContext } from "react";
-import { EditorDispatch } from "@pages/ReportWrite";
+import { EditorDispatch } from "@/report/InspectionDetails";
 import Tooltips from "@/report/Tooltips";
 
 const types = {
@@ -30,7 +30,7 @@ const Label = ({ type }) => {
   );
 };
 
-const Input = ({ type, value, setValue }) => {
+const Input = ({ type, focusRef, value, setValue }) => {
 
   const handleChange = useCallback(e => {
     setValue(prev => { 
@@ -43,6 +43,7 @@ const Input = ({ type, value, setValue }) => {
   return (
     <textarea
       className={`p-2 col-span-5 border-b last:border-0 resize-none ${type.id}`}
+      ref={focusRef}
       value={value}
     //   onChange={handleChange}
     />
@@ -50,7 +51,8 @@ const Input = ({ type, value, setValue }) => {
 };
 
 const ImageTableComponent = ({ value, index, isFirst, isLast }) => {
-  // const [value, setValue] = useState(initial);
+  const focusRef = useRef();
+  const className = !value.image && 'bg-gray-200';
   const dispatch = useContext(EditorDispatch);
 
   return (
@@ -66,13 +68,17 @@ const ImageTableComponent = ({ value, index, isFirst, isLast }) => {
           <div className="col-span-2 border-r border-gray-300 cursor-pointer">
             <div>
               <div
-                id="picture1"
-                className="bg-gray-200"
+                id={`picture-${value.id}`}
+                className='empty:bg-gray-200'
                 style={imageBoxStyle}
                 onClick={() => {
-                  dispatch("picture" + index, 4, 3);
+                  dispatch("picture-" + value.id, 4, 3);
                 }}
-              ></div>
+              >
+                {value.image &&
+                  <img src={value.image}></img>
+                }
+              </div>
             </div>
           </div>
           <div className="col-span-3">
@@ -80,6 +86,7 @@ const ImageTableComponent = ({ value, index, isFirst, isLast }) => {
               <Label type={types.position} />
               <Input
                   type={types.position}
+                  focusRef={focusRef}
                   value={value.position}
                 //   setValue={setValue}
               />
@@ -102,6 +109,7 @@ const ImageTableComponent = ({ value, index, isFirst, isLast }) => {
       <Tooltips
         id={value.id}
         index={index}
+        focusRef={focusRef}
         isFirst={isFirst}
         isLast={isLast}
       />

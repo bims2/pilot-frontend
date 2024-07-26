@@ -2,7 +2,7 @@ import React, { createContext, useContext, useReducer, useRef } from "react";
 
 const initial = [
         {
-            id: 1,
+            id: 0,
             type: 'IMAGE_TABLE',
             value: {
                 image: '',
@@ -30,32 +30,25 @@ const initial = [
                 status: '',
                 measure: '',
             }
-        },
-        // {
-        //     id: 2,
-        //     sortIndex: 2,
-        //     type: 'IMAGE',
-        //     value: {
-        //         image: '',
-        //     }
-        // },
+        }
     ];
 
-const reorderSortIndex = (arr) => {
-    arr.forEach((item, index) => item.sortIndex = index);
-}
-
 const reportWriteReducer = (state, action) => {
-    const updatedArr = [...state];
+    let updatedArr = [...state];
 
     switch (action.type) {
         case 'CREATE':
-            updatedArr.splice(action.sortIndex, 0, action.value);
+            updatedArr.splice(action.index + 1, 0, action.value);
             return updatedArr;
+
+        case 'UPDATE_IMAGE':
+            return state.map(detail =>
+                detail.id == action.id ? { ...detail, value: { ...detail.value, image: action.image } } : detail
+            );
 
         case 'UPDATE':
             return state.map(detail =>
-                detail.id === detail.id ? { ...detail, value: detail.value } : detail
+                detail.id == action.id ? { ...detail, value: { ...action.value } } : detail
             );
 
         case 'REMOVE':
@@ -79,7 +72,7 @@ const DispatchContext = createContext();
 const NextIdContext = createContext();
 
 export function InspectionDetailsProvider({ children }) {
-    const nextId = useRef(1);
+    const nextId = useRef(initial.length);
     const [state, dispatch] = useReducer(reportWriteReducer, initial);
 
     return (
