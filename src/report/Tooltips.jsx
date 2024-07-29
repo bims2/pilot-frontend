@@ -63,7 +63,7 @@ const Tooltips = ({ id, focusRef, index, isFirst, isLast }) => {
                     </button>
                     <button
                             className="group p-1.5 border"
-                            onClick={handleCreate}
+                            // onClick={handleCreate}
                     >
                         <Plus className="group-hover:text-sky-500" size={16} weight="bold" />
                     </button>
