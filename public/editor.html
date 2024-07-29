@@ -18,7 +18,7 @@
     <script>
         function save() {
             const parentWindow = window.opener;
-            parentWindow.postMessage({from: globalThis.from, base64: globalThis.editor.save()}, window.location.origin);
+            parentWindow.postMessage({source: 'graphical-editor', from: globalThis.from, base64: globalThis.editor.save()}, window.location.origin);
             window.close();
         }
     </script>

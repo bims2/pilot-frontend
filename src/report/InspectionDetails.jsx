@@ -30,6 +30,11 @@ const InspectionDetails = () => {
         if (e.origin !== window.location.origin) {
             return;
         }
+
+        if (!e.data.source || e.data.source !== 'graphical-editor') {
+          return;
+        }
+
         console.log('Received message from child:', e.data);
         const id = e.data.from;
         const base64 = e.data.base64;
