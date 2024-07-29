@@ -60,9 +60,9 @@ const ImageTableComponent = ({ value, index, isFirst, isLast }) => {
       <div className="border border-gray-300 w-full mx-auto mb-3">
         <div className="grid grid-cols-5 border-b border-gray-300">
           <div className="col-span-2 p-2 font-bold border-r border-gray-300 text-center">
-            사 진
+            사진 {index + 1}
           </div>
-          <div className="col-span-3 p-2 font-bold text-center">내 용</div>
+          <div className="col-span-3 p-2 font-bold text-center">내용</div>
         </div>
         <div className="grid grid-cols-5">
           <div className="col-span-2 border-r border-gray-300 cursor-pointer">
