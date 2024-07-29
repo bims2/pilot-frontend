@@ -12,7 +12,7 @@ const initial = [
             }
         },
         {
-            id: 2,
+            id: 1,
             type: 'IMAGE_TABLE',
             value: {
                 image: '',
@@ -22,7 +22,7 @@ const initial = [
             }
         },
         {
-            id: 3,
+            id: 2,
             type: 'IMAGE_TABLE',
             value: {
                 image: '',

@@ -17,7 +17,7 @@ const ReportWrite = () => {
             <p className={tocTitleClassName}>목차</p>
             <ul className="flex flex-col gap-3">
                 <li className={liClassName}><span className="px-1 mr-1 font-extrabold">·</span>개요</li>
-                <li className={`${liClassName} font-medium text-sky-500 hover:text-sky-600 `}>1. Combustor Drum<span class={badgeClassName}>작성 중</span></li>
+                <li className={`${liClassName} font-medium text-sky-500 hover:text-sky-600 `}>1. Combustor Drum<span className={badgeClassName}>작성 중</span></li>
                 <li className={liClassName}>2. FBHE Evaporator</li>
                 <li className={liClassName}>3. FBHE SH1-2</li>
                 <li className={liClassName}>4. FBHE SH2-1</li>

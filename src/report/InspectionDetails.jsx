@@ -26,8 +26,6 @@ const InspectionDetails = () => {
   const length = inspectionDetails.length;
 
   useEffect(() => {
-    console.log(inspectionDetails);
-
     window.addEventListener('message', (e)=> {
         if (e.origin !== window.location.origin) {
             return;
