@@ -35,7 +35,7 @@ const InspectionDetails = () => {
         const base64 = e.data.base64;
         const target = document.getElementById(id);
 
-        while (target?.firstChild) {
+        while (target && target.firstChild) {
             target.removeChild(target.firstChild);
         }
 
