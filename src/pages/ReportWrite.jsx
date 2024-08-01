@@ -20,7 +20,7 @@ const ChapterOverview = () => {
             <div className="mb-10">
                 <h3 className="mb-5 font-semibold">가. Tube 규격</h3>
                 <div>
-                    <table className="border border-collapse rounded-md w-full border bg-white text-sm shadow-sm">
+                    <table className="border border-collapse rounded-md w-full bg-white text-sm shadow-sm">
                         <thead className="bg-gray-50">
                             <tr>
                                 <th className={thClassName}>전열면</th>
