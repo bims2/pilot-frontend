@@ -4,11 +4,13 @@ import InspectionDetails from '@/report/InspectionDetails';
 import { InspectionDetailsProvider } from '@/report/InspectionDetailsContext';
 
 const badgeClassName = 'ml-2 inline-flex items-center rounded-lg bg-sky-50 px-1.5 py-1 text-xs font-medium text-sky-600 ring-1 ring-inset ring-sky-700/10';
+const availableBadgeClassName = 'ml-2 inline-flex items-center rounded-lg bg-pink-50 px-1.5 py-1 text-xs font-medium text-pink-600 ring-1 ring-inset ring-pink-700/10';
 
 const linkClassName = 'text-gray-600 hover:text-gray-900 cursor-pointer';
-const linkActiveClassName = 'font-semibold'
+const linkActiveClassName = 'font-bold'
 
 const liClassName = 'text-gray-600 hover:text-gray-900 cursor-pointer'
+const disabledClassName = 'text-gray-600';
 const tocTitleClassName = 'mb-3 text-gray-500 font-semibold text-sm'
 
 const thClassName = 'border font-semibold p-3 text-slate-900 text-left';
@@ -87,17 +89,23 @@ const ReportWrite = () => {
                             <span className={badgeClassName}>작성 중</span>
                         </div>
                         <ul className="ml-5 flex flex-col gap-1">
-                            <li className={`${linkClassName} ${page == 1 && linkActiveClassName}`} onClick={handleClickOverviewLink}>가. Tube 규격</li>
+                            <li className={`${linkClassName} ${page == 1 && linkActiveClassName}`} onClick={handleClickOverviewLink}>
+                                가. Tube 규격
+                                <span className={availableBadgeClassName}>테스트 가능</span>
+                            </li>
                             <li className={`${linkClassName}`} onClick={handleClickOverviewLink}>나. 점검 요약</li>
-                            <li className={`${linkClassName} ${page == 2 && linkActiveClassName}`} onClick={handleClickInspectionDetailsLink}>다. 점검 결과</li>
+                            <li className={`${linkClassName} ${page == 2 && linkActiveClassName}`} onClick={handleClickInspectionDetailsLink}>
+                                다. 점검 결과
+                                <span className={availableBadgeClassName}>테스트 가능</span>
+                            </li>
                         </ul>
                     </div>
                 </li>
-                <li className={liClassName}>2. FBHE Evaporator</li>
-                <li className={liClassName}>3. FBHE SH1-2</li>
-                <li className={liClassName}>4. FBHE SH2-1</li>
-                <li className={liClassName}>5. FBHE SH2-2</li>
-                <li className={liClassName}>6. Back Pass(& Eco1)</li>
+                <li className={disabledClassName}>2. FBHE Evaporator</li>
+                <li className={disabledClassName}>3. FBHE SH1-2</li>
+                <li className={disabledClassName}>4. FBHE SH2-1</li>
+                <li className={disabledClassName}>5. FBHE SH2-2</li>
+                <li className={disabledClassName}>6. Back Pass(& Eco1)</li>
             </ul>
         </section>
         <section className="flex-1 bd-main py-10">
